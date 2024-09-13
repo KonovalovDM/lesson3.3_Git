@@ -39,7 +39,7 @@ misses = 0
 # Шрифт для отображения текста
 font = pygame.font.Font(None, 36)
 
-# Основной цикл игры
+# Основной цикл игры до 50 промахов или принудительного выхода
 
 running = True
 while running:
@@ -64,7 +64,8 @@ while running:
                 miss_sound.play()
                 # изменение цвета при промахе
                 color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
-
+            if misses >= 50:
+                running = False
 
      # Обновление позиции мишени
     target_x += target_speed_x
@@ -87,5 +88,6 @@ while running:
     screen.blit(misses_text, (10, 50))
 
     pygame.display.update()
+
 
 pygame.quit()
